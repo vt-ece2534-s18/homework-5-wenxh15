@@ -40,13 +40,20 @@ void DrawMenu() {
     sprintf(text, "Green");
     Graphics_drawString(&g_sContext, (int8_t *) text, -1, 40, 40, true);
 
+    sprintf(text, "Blue");
+    Graphics_drawString(&g_sContext, (int8_t *) text, -1, 40, 60, true);
+
+    sprintf(text, "Yellow");
+    Graphics_drawString(&g_sContext, (int8_t *) text, -1, 40, 80, true);
+
     sprintf(text, "->");
     Graphics_drawString(&g_sContext, (int8_t *) text, -1, 20, 20, true);
 
 }
 
 
-int main(void) {
+int main(void)
+{
     WDT_A_hold(WDT_A_BASE);
     unsigned vx, vy;
     char buf[10];
@@ -70,7 +77,6 @@ int main(void) {
             Toggle_Launchpad_Left_LED();
 
         getSampleJoyStick(&vx, &vy);
-
 
 
     }
