@@ -29,7 +29,18 @@ void LCDDrawChar(unsigned row, unsigned col, int8_t c) {
                         16 * (row % 8),
                         OPAQUE_TEXT);
 }
+void DrawFillCircle(){
+    unsigned i ;
+    static unsigned x = 0, y = 63;
+    i = 127;
 
+    Graphics_fillCircle(&g_sContext, x, y, 5);
+    Graphics_fillCircle(&g_sContext, i, y, 5);
+    StartOneShot1sTimer();
+    StartOneShot1sTimer();
+    StartOneShot1sTimer();
+    Graphics_clearDisplay(&g_sContext);
+}
 
 int main(void) {
     WDT_A_hold(WDT_A_BASE);
