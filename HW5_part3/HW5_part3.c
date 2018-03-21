@@ -26,13 +26,52 @@ void InitGraphics() {
 
 
 void moveCircle() {
-    unsigned i;
-    static unsigned x = 0, y = 63;
+    unsigned i ;
+     static unsigned x = 0, y = 63;
+     i = 127;
 
+     Graphics_drawCircle(&g_sContext, x, y, 5);
+     Graphics_drawCircle(&g_sContext, i, y, 5);
+     StartOneShot10mTimer();
+     Graphics_clearDisplay(&g_sContext);
 
-    Graphics_drawCircle(&g_sContext, x, y, 5);
+     while (1){
+         x=(rand()%128);
+         if(x <= 5){
+             i = 127+x;
+             Graphics_drawCircle(&g_sContext, x, y, 5);
+             Graphics_drawCircle(&g_sContext, i, y, 5);
+             StartOneShot10mTimer();
+             Graphics_clearDisplay(&g_sContext);
+         }
+         else if (x >= 122){
+             i = x-127;
+             Graphics_drawCircle(&g_sContext, x, y, 5);
+             Graphics_drawCircle(&g_sContext, i, y, 5);
+             StartOneShot10mTimer();
+             Graphics_clearDisplay(&g_sContext);
+         }
+         else if(x>=63 &&x<=65){
+             i = x-5;
+             Graphics_drawCircle(&g_sContext, x, y, 5);
+             Graphics_drawCircle(&g_sContext, i, y, 5);
+             StartOneShot10mTimer();
+             Graphics_clearDisplay(&g_sContext);
+         }
+         else if (x>=61 && x<63){
+             i = 5+x;
+             Graphics_drawCircle(&g_sContext, x, y, 5);
+             Graphics_drawCircle(&g_sContext, i, y, 5);
+             StartOneShot10mTimer();
+             Graphics_clearDisplay(&g_sContext);
+         }
+         else {
+             Graphics_drawCircle(&g_sContext, x, y, 5);
+             StartOneShot10mTimer();
+             Graphics_clearDisplay(&g_sContext);
+         }
 }
-
+}
 int main(void) {
     WDT_A_hold(WDT_A_BASE);
 
